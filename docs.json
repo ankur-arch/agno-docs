@@ -625,6 +625,12 @@
                         ]
                       },
                       {
+                        "group": "Prisma Postgres",
+                        "pages": [
+                          "database/providers/prisma-postgres/overview"
+                        ]
+                      },
+                      {
                         "group": "ClickHouse",
                         "pages": [
                           "database/providers/clickhouse/overview"
@@ -4266,6 +4272,12 @@
                     "group": "Neon",
                     "pages": [
                       "database/providers/neon/overview"
+                    ]
+                  },
+                  {
+                    "group": "Prisma Postgres",
+                    "pages": [
+                      "database/providers/prisma-postgres/overview"
                     ]
                   },
                   "database/providers/selecting-tables"

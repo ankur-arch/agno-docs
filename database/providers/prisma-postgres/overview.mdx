@@ -1,0 +1,46 @@
+---
+title: Prisma Postgres
+description: Use Prisma Postgres for agent session storage.
+sidebarTitle: Overview
+---
+
+Agno supports using [Prisma Postgres](https://www.prisma.io/postgres) with the `PostgresDb` class.
+
+You can get started with Prisma Postgres by following their [documentation](https://www.prisma.io/docs/postgres).
+
+You can also read more about the [`PostgresDb` class](/database/providers/postgres/overview) in its section.
+
+## Usage
+
+Install the `sqlalchemy`, `psycopg`, and `openai` packages:
+
+```shell
+uv pip install "sqlalchemy[asyncio]" "psycopg[binary]" openai
+```
+
+Prisma Postgres connection strings start with `postgres://`. Change the scheme to `postgresql+psycopg://` and keep `sslmode=require`:
+
+```shell
+export PRISMA_DB_URL="postgresql+psycopg://<user>:<password>@db.prisma.io:5432/postgres?sslmode=require"
+```
+
+```python prisma_postgres_for_agent.py
+from agno.agent import Agent
+from agno.db.postgres import PostgresDb
+from os import getenv
+
+# Get your Prisma Postgres database URL, using the postgresql+psycopg:// scheme
+PRISMA_DB_URL = getenv("PRISMA_DB_URL")
+
+# Setup the Prisma Postgres database
+db = PostgresDb(db_url=PRISMA_DB_URL)
+
+# Setup your Agent with the Database
+agent = Agent(db=db)
+```
+
+`PostgresDb` creates its tables on first use. Both the direct host (`db.prisma.io`) and the pooled host (`pooled.db.prisma.io`) work.
+
+## Params
+
+<Snippet file="db-postgres-params.mdx" />
